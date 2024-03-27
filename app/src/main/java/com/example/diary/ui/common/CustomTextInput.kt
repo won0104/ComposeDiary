@@ -1,4 +1,4 @@
-package com.example.diary.util
+package com.example.diary.ui.common
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.BasicTextField

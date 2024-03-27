@@ -30,7 +30,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.diary.R
 import com.example.diary.model.FakeDiariesRepository
-import com.example.diary.util.CustomTextInput
+import com.example.diary.ui.common.OneButton
+import com.example.diary.ui.common.CustomTextInput
 import com.example.diary.vm.DiaryViewModel
 import java.time.LocalDateTime
 

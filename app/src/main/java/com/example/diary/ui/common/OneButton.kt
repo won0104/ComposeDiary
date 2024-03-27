@@ -1,4 +1,4 @@
-package com.example.diary.ui
+package com.example.diary.ui.common
 
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width

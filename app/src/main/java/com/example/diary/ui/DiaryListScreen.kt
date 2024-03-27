@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.diary.model.Diary
 import com.example.diary.model.FakeDiariesRepository
+import com.example.diary.ui.common.OneButton
 import com.example.diary.ui.theme.DiaryTheme
 import com.example.diary.vm.DiaryViewModel
 import java.time.LocalDateTime
