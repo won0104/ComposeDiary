@@ -41,14 +41,15 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.res.painterResource
 import com.example.diary.R
-import com.example.diary.datePicker
+import com.example.diary.util.datePicker
 import com.example.diary.model.FakeDiariesRepository
 import com.example.diary.ui.theme.gray_light
+import com.example.diary.vm.DiaryViewModel
 import java.time.LocalDateTime
 import java.time.ZoneId
 
 @Composable
-fun DatePickerFragment(
+fun DatePickerDialog(
     select: Boolean,
     viewModel: DiaryViewModel,
     onDateSelected: (LocalDateTime) -> Unit // 뷰 모델 값 업데이트
@@ -166,12 +167,12 @@ fun DatePickerFragment(
 
 @Preview(showBackground = true)
 @Composable
-fun DatePickerFragmentPreview() {
+fun DatePickerDialogPreview() {
     val fakeRepository = FakeDiariesRepository()
     val diaryViewModel = DiaryViewModel(fakeRepository)
 
     DiaryTheme {
-        DatePickerFragment(
+        DatePickerDialog(
             select = false,
             diaryViewModel,
             onDateSelected = { date ->

@@ -29,6 +29,7 @@ import com.example.diary.model.Diary
 import com.example.diary.model.FakeDiariesRepository
 import com.example.diary.ui.theme.DiaryTheme
 import com.example.diary.ui.theme.highlights_blue
+import com.example.diary.vm.DiaryViewModel
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 

@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,11 +26,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.diary.R
 import com.example.diary.model.FakeDiariesRepository
+import com.example.diary.util.CustomTextInput
+import com.example.diary.vm.DiaryViewModel
 import java.time.LocalDateTime
 
 @Composable
@@ -112,7 +112,7 @@ fun EntryForm(
             // 버튼 유형 설정
             if (readOnly && !(update)) { // 상세 보기 화면일 때
                 diary?.id?.let {
-                    TwoButtonFragment(
+                    UpdateDeleteButton(
                         id = id,
                         diaryDelete = {
                             dialogType = 1
@@ -122,12 +122,12 @@ fun EntryForm(
                     )
                 }
             } else if (!readOnly && update) { // 수정하기 화면일 때
-                OneButtonFragment(buttonText = stringResource(id = R.string.update)) {
+                OneButton(buttonText = stringResource(id = R.string.update)) {
                     dialogType = 2
                     showDialog = true
                 }
             } else { // 일기 쓰기 (저장) 화면일 때
-                OneButtonFragment(buttonText = stringResource(id = R.string.save)) {
+                OneButton(buttonText = stringResource(id = R.string.save)) {
                     val message: String
                     if (title.value.isNotBlank()) {
                         message = context.getString(R.string.saved_message,title.value)
@@ -143,7 +143,7 @@ fun EntryForm(
 
             //Dialog Type 설정
             if (dialogType == 1) { // 삭제
-                DialogContent(
+                GenericDialog(
                     showDialog,
                     stringResource(id = R.string.dialog_delete),
                     onDismissRequest = { showDialog = false },
@@ -159,7 +159,7 @@ fun EntryForm(
                     navController.navigate("list")
                 }
             } else if (dialogType == 2) { // 수정
-                DialogContent(
+                GenericDialog(
                     showDialog,
                     stringResource(id = R.string.dialog_update),
                     onDismissRequest = { showDialog = false },
@@ -177,23 +177,6 @@ fun EntryForm(
             }
         }
     }
-}
-
-@Composable
-fun CustomTextInput(hint: String, textState: MutableState<String>, readOnly: Boolean) {
-    BasicTextField(
-        value = textState.value,
-        onValueChange = { textState.value = it },
-        textStyle = TextStyle(color = Color.Black),
-        modifier = Modifier.fillMaxWidth(),
-        readOnly = readOnly,
-        decorationBox = { innerTextField ->
-            if (textState.value.isEmpty()) {
-                Text(text = hint, style = TextStyle(color = Color.Gray))
-            }
-            innerTextField()
-        }
-    )
 }
 
 @Preview(showBackground = true)

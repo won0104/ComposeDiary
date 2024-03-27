@@ -27,10 +27,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.diary.R
-import com.example.diary.SetupNavHost
+import com.example.diary.nav.SetupNavHost
 import com.example.diary.model.FakeDiariesRepository
 import com.example.diary.ui.theme.DiaryTheme
 import com.example.diary.ui.theme.primary_background_color
+import com.example.diary.util.KeyboardHidingSurface
+import com.example.diary.vm.DiaryViewModel
 import java.time.LocalDateTime
 
 @Composable
@@ -88,7 +90,7 @@ fun BaseScreen(
                         )
                         if (pageTitle == R.string.diary_list) {
                             Box(modifier = Modifier.align(Alignment.CenterVertically)) {
-                                DatePickerFragment(
+                                DatePickerDialog(
                                     select = false,
                                     viewModel,
                                     onDateSelected = { date ->
@@ -98,7 +100,7 @@ fun BaseScreen(
                             }
                         } else {
                             Box(modifier = Modifier.align(Alignment.CenterVertically)) {
-                                DatePickerFragment(
+                                DatePickerDialog(
                                     select = true,
                                     viewModel,
                                     onDateSelected = { date ->

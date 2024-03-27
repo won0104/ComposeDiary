@@ -16,12 +16,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.diary.model.Diary
 import com.example.diary.model.FakeDiariesRepository
 import com.example.diary.ui.theme.DiaryTheme
+import com.example.diary.vm.DiaryViewModel
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 import kotlin.math.abs
 
 @Composable
-fun DiaryList(viewModel: DiaryViewModel, onDiaryClick: (Int,LocalDateTime) -> Unit, onNavigateToCreate:()->Unit) {
+fun DiaryListScreen(viewModel: DiaryViewModel, onDiaryClick: (Int, LocalDateTime) -> Unit, onNavigateToCreate:()->Unit) {
     // LiveData를 관찰하여 UI 업데이트
     val diaries by viewModel.getAllDiaries.observeAsState(initial = emptyList())
     val listState = rememberLazyListState()
@@ -50,7 +51,7 @@ fun DiaryList(viewModel: DiaryViewModel, onDiaryClick: (Int,LocalDateTime) -> Un
         }
         Spacer(modifier = Modifier.weight(0.038f))
         Column(modifier = Modifier.weight(0.120f)) {
-            OneButtonFragment(buttonText = "일기 쓰기", onNavigateToCreate)
+            OneButton(buttonText = "일기 쓰기", onNavigateToCreate)
         }
     }
 }
@@ -61,7 +62,7 @@ fun DiaryListPreview() {
     DiaryTheme {
         val fakeRepository = FakeDiariesRepository()
         val diaryViewModel = DiaryViewModel(fakeRepository)
-        DiaryList(
+        DiaryListScreen(
             viewModel = diaryViewModel,
             onDiaryClick = { _, _ -> },
             onNavigateToCreate = { }

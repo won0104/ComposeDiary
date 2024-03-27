@@ -1,4 +1,4 @@
-package com.example.diary
+package com.example.diary.nav
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
@@ -7,8 +7,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.diary.ui.DiaryList
-import com.example.diary.ui.DiaryViewModel
+import com.example.diary.ui.DiaryListScreen
+import com.example.diary.vm.DiaryViewModel
 import com.example.diary.ui.EntryForm
 import java.time.LocalDateTime
 
@@ -23,7 +23,7 @@ fun SetupNavHost(
         startDestination = "list"
     ) {
         composable("list") {
-            DiaryList(viewModel,
+            DiaryListScreen(viewModel,
                 onDiaryClick = { diaryId, diaryDate ->
                     viewModel.updateSelectedDate(diaryDate)
                     navController.navigate("detail/$diaryId")

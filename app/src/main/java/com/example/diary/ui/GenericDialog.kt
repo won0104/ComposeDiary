@@ -24,7 +24,7 @@ import com.example.diary.ui.theme.DiaryTheme
 import com.example.diary.ui.theme.toast_button_blue
 
 @Composable
-fun DialogContent(
+fun GenericDialog(
     showDialog: Boolean,
     title: String,
     onDismissRequest: () -> Unit,
@@ -85,11 +85,11 @@ fun DialogContent(
 
 @Preview(showBackground = true)
 @Composable
-fun DialogContentPreview() {
+fun GenericDialogPreview() {
     val title = stringResource(id = R.string.delete_dialog_title)
     val positiveText = stringResource(id = R.string.delete_dialog_positive_text)
     val negativeText = stringResource(id = R.string.dialog_negative_text)
     DiaryTheme {
-        DialogContent(true, title, {}, positiveText, negativeText) {}
+        GenericDialog(true, title, {}, positiveText, negativeText) {}
     }
 }

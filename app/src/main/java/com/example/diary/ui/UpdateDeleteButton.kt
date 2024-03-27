@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -16,30 +15,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.diary.R
 import com.example.diary.ui.theme.DiaryTheme
 import com.example.diary.ui.theme.accent_blue
 
 @Composable
-fun OneButtonFragment(buttonText: String, pressButton: () -> Unit) {
-    Button(
-        onClick = { pressButton() },
-        modifier = Modifier
-            .width(333.dp)
-            .height(50.dp),
-        shape = RoundedCornerShape(10.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = accent_blue,
-            contentColor = Color.White
-        ),
-    ) {
-        Text(text = buttonText, style = MaterialTheme.typography.labelLarge)
-    }
-}
-
-@Composable
-fun TwoButtonFragment(id :Int, diaryDelete:() ->Unit, onNavigateToUpdate: (Int) -> Unit) {
+fun UpdateDeleteButton(id :Int, diaryDelete:() ->Unit, onNavigateToUpdate: (Int) -> Unit) {
     Row(
         modifier = Modifier
             .height(50.dp)
@@ -58,7 +42,7 @@ fun TwoButtonFragment(id :Int, diaryDelete:() ->Unit, onNavigateToUpdate: (Int) 
                 contentColor = accent_blue
             ),
         ) {
-            Text(text = "삭제", style = MaterialTheme.typography.labelLarge)
+            Text(text = stringResource(id = R.string.delete), style = MaterialTheme.typography.labelLarge)
         }
         Spacer(modifier = Modifier.weight(0.06f))
 
@@ -73,16 +57,15 @@ fun TwoButtonFragment(id :Int, diaryDelete:() ->Unit, onNavigateToUpdate: (Int) 
                 contentColor = Color.White
             ),
         ) {
-            Text(text = "수정", style = MaterialTheme.typography.labelLarge)
+            Text(text = stringResource(id = R.string.update_button), style = MaterialTheme.typography.labelLarge)
         }
     }
-
 }
 
 @Preview(showBackground = true)
 @Composable
-fun ButtonFragmentPreview() {
+fun UpdateDeleteButtonPreview() {
     DiaryTheme {
-        TwoButtonFragment(1, {},{})
+        UpdateDeleteButton(1, {},{})
     }
 }

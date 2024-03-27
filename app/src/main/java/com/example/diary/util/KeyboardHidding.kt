@@ -1,4 +1,4 @@
-package com.example.diary.ui
+package com.example.diary.util
 
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
