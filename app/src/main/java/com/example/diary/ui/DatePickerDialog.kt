@@ -92,22 +92,19 @@ fun DatePickerDialog(
             }) {
             Box(
                 modifier = Modifier
-                    .height(18.dp)
-                    .wrapContentWidth()
                     .width(IntrinsicSize.Max)
             ) {
                 Box(
                     modifier = Modifier
-                        .align(Alignment.BottomCenter)
                         .fillMaxWidth()
                         .height(5.dp)
                         .background(highlights_blue)
+                        .align(Alignment.BottomCenter)
                 )
                 Text(
                     text = selectDate,
                     style = MaterialTheme.typography.labelMedium,
                     modifier = Modifier
-                        .wrapContentWidth()
                         .align(Alignment.TopCenter)
                 )
             }

@@ -55,9 +55,9 @@ fun DiaryCard(diary: Diary, onItemClick: (Int, LocalDateTime) -> Unit) {
             ) {
                 Box(
                     modifier = Modifier
-                        .background(highlights_blue)
-                        .fillMaxWidth()
                         .height(9.dp)
+                        .fillMaxWidth()
+                        .background(highlights_blue)
                 )
                 Text(
                     text = date,
