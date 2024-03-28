@@ -31,6 +31,7 @@ import java.util.Locale
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -93,12 +94,12 @@ fun DatePickerDialog(
                 modifier = Modifier
                     .height(18.dp)
                     .wrapContentWidth()
+                    .width(IntrinsicSize.Max)
             ) {
                 Box(
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
-                        .width(115.dp) // 아래 있는 Text 크기에 맞춰서 변경 가능 한지
-                        .matchParentSize()
+                        .fillMaxWidth()
                         .height(5.dp)
                         .background(highlights_blue)
                 )
@@ -132,6 +133,7 @@ fun DatePickerDialog(
             modifier = Modifier
                 .height(27.dp)
                 .width(90.dp)
+
         ) {
             Button(
                 onClick = {
@@ -173,7 +175,7 @@ fun DatePickerDialogPreview() {
 
     DiaryTheme {
         DatePickerDialog(
-            select = false,
+            select = true,
             diaryViewModel,
             onDateSelected = { date ->
                 diaryViewModel.updateSelectedDate(date)
